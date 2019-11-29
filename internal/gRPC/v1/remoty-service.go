@@ -27,6 +27,8 @@ func (s *grpcService) AddToQueue(ctx context.Context, req *pb.Link) (*pb.Void, e
 	if err != nil {
 		log.Error(err)
 	}
+
+	log.Info("link added to the queue list")
 	return &pb.Void{}, err
 }
 func (s *grpcService) Download(ctx context.Context, req *pb.Link) (*pb.Void, error) {
@@ -37,6 +39,8 @@ func (s *grpcService) Download(ctx context.Context, req *pb.Link) (*pb.Void, err
 	if err != nil {
 		log.Error(err)
 	}
+
+	log.Info("start download given link")
 	return &pb.Void{}, err
 }
 func (s *grpcService) StartDownload(ctx context.Context, req *pb.Void) (*pb.Void, error) {
@@ -46,5 +50,6 @@ func (s *grpcService) StartDownload(ctx context.Context, req *pb.Void) (*pb.Void
 		s.logger.Error(err)
 	}
 
+	s.logger.Info("start downloading main queue")
 	return &pb.Void{}, err
 }
