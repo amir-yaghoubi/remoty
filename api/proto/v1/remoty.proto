@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package api;
+
+
+message Link {
+  string url = 1;
+}
+
+message Void {
+}
+
+
+service RemotyService {
+  rpc AddToQueue(Link) returns (Void) {}
+  rpc Download(Link) returns (Void) {}
+  rpc StartDownload(Void) returns(Void) {}
+}
